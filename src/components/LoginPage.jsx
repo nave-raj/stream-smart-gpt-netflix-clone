@@ -1,0 +1,49 @@
+import React, { useRef, useState } from 'react'
+import NavBar from './NavBar'
+
+const LoginPage = () => {
+
+    const [IsSignInPage, setIsSignInPage] = useState(true);
+    const email = useRef(null);
+    const password = useRef(null);
+    const fullName = useRef(null);
+
+    const toggleLoginPage = () => {
+        setIsSignInPage(!IsSignInPage)
+    }
+
+    const handleButtonClick = () => {
+        console.log(email.current.value);
+        
+    }
+
+    return (
+        <>
+            <div className='absolute h-screen items-center justify-center'>
+                <NavBar/>
+                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/0552717c-9d8c-47bd-9640-4f4efa2de663/52e4cd00-9a33-4f8b-afa0-6623070f7654/US-en-20240701-POP_SIGNUP_TWO_WEEKS-perspective_WEB_6392408d-671b-40c8-83c8-888c04ea535d_medium.jpg' alt='background' />
+            </div>
+            <div className='flex items-center justify-center h-screen relative'>
+                <form 
+                 onClick={(event)=>{event.preventDefault()}}
+                 className='w-1/4 bg-black bg-opacity-85 text-white flex flex-col items-center py-20 rounded-lg'>
+                    <h1 className="text-3xl font-bold py-5">{IsSignInPage? 'Sign In' : 'Sign Up'}</h1>
+                    { !IsSignInPage &&
+                        <input ref={fullName} type='text' placeholder='Full Name' id='full-name' className='p-4 m-4 w-3/4 bg-black bg-opacity-85 rounded-md' />
+                    }
+                    <input ref={email} type='text' placeholder='Email Address' id='email' className='p-4 m-4 w-3/4 bg-black bg-opacity-85 border-gray-50 rounded-md' />
+                    <input ref={password} type='password' placeholder='Password' id='password' className='p-4 m-4 w-3/4 bg-black bg-opacity-85 rounded-md' />
+                    <button id='sign-in' className='p-4 m-4 bg-red-700 w-3/4 rounded-md'
+                     onClick={handleButtonClick}>
+                        {IsSignInPage? 'Sign In' : 'Sign Up'}
+                    </button>
+                    <p className='p-2 cursor-pointer' onClick={toggleLoginPage}>
+                        {IsSignInPage? 'New to Netflix? Sign Up Now' : 'Already registered? Sign In'}
+                    </p>
+                </form>
+            </div>
+        </>
+    )
+}
+
+export default LoginPage
