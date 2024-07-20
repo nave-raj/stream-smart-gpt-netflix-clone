@@ -2,10 +2,15 @@ import React, { useRef, useState } from 'react'
 import NavBar from './NavBar'
 import { validateLoginFields } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth} from '../utils/firebase'
+import { auth } from '../utils/firebase';
+import { addUser } from '../utils/store/userSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const LoginPage = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [isSignInPage, setIsSignInPage] = useState(true);
     const [errorMsg, setErrorMessage] = useState(null);
@@ -18,6 +23,7 @@ const LoginPage = () => {
     }
 
     const handleButtonClick = () => {
+
         console.log(email.current.value);
         /* validating form data */
         const message = validateLoginFields(email.current.value, password.current.value, fullName?.current?.value);
@@ -33,7 +39,7 @@ const LoginPage = () => {
                  }).catch((err) => {
                     const errorCode = err.code;
                     const errorMessage = err.message;
-                    setErrorMessage(errorMessage?.toLowerCase()?.replace("_"," "));
+                    setErrorMessage(errorMessage);
                     console.log(errorCode + "-" + errorMessage);
                  });
             } else {
@@ -41,12 +47,15 @@ const LoginPage = () => {
                  .then((userCredential) => {
                    // Signed in 
                     const user = userCredential.user;
+                    const {uid, email, displayName} = user;
+                    dispatch(addUser({uid: uid, email: email, displayName: displayName}));
+                    navigate('/browse');
                     console.log(user);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    setErrorMessage(errorMessage?.toLowerCase()?.replace("_"," "));
+                    setErrorMessage(errorMessage);
                 });
             }
         }
@@ -54,9 +63,9 @@ const LoginPage = () => {
 
     return (
         <>
-            <div className='absolute h-screen items-center justify-center'>
+            <div className='absolute items-center justify-center'>
                 <NavBar/>
-                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/0552717c-9d8c-47bd-9640-4f4efa2de663/52e4cd00-9a33-4f8b-afa0-6623070f7654/US-en-20240701-POP_SIGNUP_TWO_WEEKS-perspective_WEB_6392408d-671b-40c8-83c8-888c04ea535d_medium.jpg' alt='background' />
+                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/0552717c-9d8c-47bd-9640-4f4efa2de663/52e4cd00-9a33-4f8b-afa0-6623070f7654/US-en-20240701-POP_SIGNUP_TWO_WEEKS-perspective_WEB_6392408d-671b-40c8-83c8-888c04ea535d_medium.jpg' alt='background' className='h-screen' />
             </div>
             <div className='flex items-center justify-center h-screen relative'>
                 <form 
