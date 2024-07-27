@@ -22,7 +22,7 @@ const NavBar = () => {
       }
     });
 
-    // to remove the onAuthStateChange callback
+    // cleanup - to remove the onAuthStateChange callback
     return () => removeAuthStateChange();
   }, []);
 
