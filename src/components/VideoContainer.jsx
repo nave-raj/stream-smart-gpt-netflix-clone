@@ -7,8 +7,8 @@ const VideoContainer = (props) => {
         <h1 className='font-bold text-5xl py-6 w-1/2'>{title}</h1>
         <p className='w-1/2'>{overview}</p>
         <div className='pt-10 justify-between'>
-            <button className='bg-black text-white p-3 px-10'>Play</button>
-            <button className='bg-black text-white p-3 px-10'>More Info</button>
+            <button className='bg-white text-white p-3 px-10 rounded-lg bg-opacity-50'>Play</button>
+            <button className='bg-white text-white p-3 mx-3 px-10 rounded-lg bg-opacity-50'>More Info</button>
         </div>
     </div>
   )

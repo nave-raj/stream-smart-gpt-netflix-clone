@@ -27,7 +27,7 @@ const TrailerContainer = (props) => {
   return (
     <div>
         <iframe 
-            src={'https://www.youtube.com/embed/' + trailerMovieData?.key + "?&autoplay=1&mute=1"}
+            src={'https://www.youtube.com/embed/' + trailerMovieData?.key + "?&autoplay=1&mute=1&controls=0"}
             className='w-screen aspect-video'
             title="YouTube video player" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" >
