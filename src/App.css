@@ -1,0 +1,26 @@
+body {
+  background: black;
+  opacity: 90%;
+}
+
+.scrollbar-black::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scrollbar-black::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.scrollbar-black::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+.scrollbar-black {
+  scrollbar-width: thin;
+  scrollbar-color: #000 #000;
+}
+
+.scrollbar-black-grey {
+  scrollbar-width: auto;
+  scrollbar-color: #555 #000;
+}
