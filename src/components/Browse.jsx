@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
 import NavBar from './NavBar'
 import { API_OPTIONS } from '../utils/constant';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNowPlayingMovies, addPopularMovies, addTopRatedMovies, addUpcomingMovies } from '../utils/store/movieSlice';
 import MovieCollectionContainer from './MovieCollectionContainer';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import GptSearchPage from './GPTSearch/GptSearchPage';
+
 
 const Browse = () => {
 
-    const dispatch = useDispatch();
+    const isGptSearchPage = useSelector((store) => store.search?.isGptSearchPage);
+
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatedMovies();
@@ -21,7 +24,7 @@ const Browse = () => {
     return (
         <>
             <NavBar />
-            <MovieCollectionContainer />
+            {isGptSearchPage ? <GptSearchPage /> : <MovieCollectionContainer />}
         </>
     )
 }
