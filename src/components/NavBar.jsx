@@ -46,13 +46,23 @@ const NavBar = () => {
       }
   }
 
+  const handleOptionChange = () => {
+
+  }
+
   return (
     <div className='absolute py-3 px-10 bg-gradient-to-b from-black z-10 w-screen flex justify-between'>
         <img className='w-40' src={LOGO} alt="logo" />
-      <div>
-        <button  onClick={toggleButtonClick} className='text-white m-2 p-2 font-bold'>{!isGptSearchPage ? "Gpt Search" : "Home"}</button>
-        <button  onClick={handleSignOut} className='text-white m-2 p-2 font-bold'>Sign Out</button>
-      </div>
+        <div>
+          {isGptSearchPage && 
+            <select className='m-2 p-2 rounded-md text-white bg-gray-700' onChange={handleOptionChange}>
+              <option value={'English'}>English</option>
+              <option value={'Spanish'}>Spanish</option>
+              <option value={'French'}>French</option>
+            </select>}
+          <button  onClick={toggleButtonClick} className='text-white m-2 p-2 font-bold'>{!isGptSearchPage ? "Gpt Search" : "Home"}</button>
+          <button  onClick={handleSignOut} className='text-white m-2 p-2 font-bold'>Sign Out</button>
+        </div>
     </div>
   )
 }
