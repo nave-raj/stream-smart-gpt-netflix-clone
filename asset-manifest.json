@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Stream-Smart-GPT-Netflix-Clone/static/css/main.75a159f3.css",
-    "main.js": "/Stream-Smart-GPT-Netflix-Clone/static/js/main.896a8586.js",
-    "static/js/453.b2790222.chunk.js": "/Stream-Smart-GPT-Netflix-Clone/static/js/453.b2790222.chunk.js",
-    "index.html": "/Stream-Smart-GPT-Netflix-Clone/index.html",
-    "main.75a159f3.css.map": "/Stream-Smart-GPT-Netflix-Clone/static/css/main.75a159f3.css.map",
-    "main.896a8586.js.map": "/Stream-Smart-GPT-Netflix-Clone/static/js/main.896a8586.js.map",
-    "453.b2790222.chunk.js.map": "/Stream-Smart-GPT-Netflix-Clone/static/js/453.b2790222.chunk.js.map"
+    "main.css": "/stream-smart-gpt-netflix-clone/static/css/main.75a159f3.css",
+    "main.js": "/stream-smart-gpt-netflix-clone/static/js/main.30a1a53b.js",
+    "static/js/453.b2790222.chunk.js": "/stream-smart-gpt-netflix-clone/static/js/453.b2790222.chunk.js",
+    "index.html": "/stream-smart-gpt-netflix-clone/index.html",
+    "main.75a159f3.css.map": "/stream-smart-gpt-netflix-clone/static/css/main.75a159f3.css.map",
+    "main.30a1a53b.js.map": "/stream-smart-gpt-netflix-clone/static/js/main.30a1a53b.js.map",
+    "453.b2790222.chunk.js.map": "/stream-smart-gpt-netflix-clone/static/js/453.b2790222.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.75a159f3.css",
-    "static/js/main.896a8586.js"
+    "static/js/main.30a1a53b.js"
   ]
 }
