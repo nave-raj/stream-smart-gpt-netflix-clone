@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { removeUser } from '../utils/store/userSlice';
 import { LOGO } from '../utils/constant';
-import { setIsGptSearchPage } from '../utils/store/searchSlice';
+import { setIsGptSearchPage, setSelectedLanguage } from '../utils/store/searchSlice';
 
 const NavBar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isGptSearchPage = useSelector((store) => store.search?.isGptSearchPage);
-
+ 
   useEffect(()=> {
     const removeAuthStateChange = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -46,8 +46,8 @@ const NavBar = () => {
       }
   }
 
-  const handleOptionChange = () => {
-
+  const handleOptionChange = (event) => {
+    dispatch(setSelectedLanguage(event.target.value));
   }
 
   return (
@@ -56,9 +56,9 @@ const NavBar = () => {
         <div>
           {isGptSearchPage && 
             <select className='m-2 p-2 rounded-md text-white bg-gray-700' onChange={handleOptionChange}>
-              <option value={'English'}>English</option>
-              <option value={'Spanish'}>Spanish</option>
-              <option value={'French'}>French</option>
+              <option value={'en'}>English</option>
+              <option value={'spanish'}>Spanish</option>
+              <option value={'french'}>French</option>
             </select>}
           <button  onClick={toggleButtonClick} className='text-white m-2 p-2 font-bold'>{!isGptSearchPage ? "Gpt Search" : "Home"}</button>
           <button  onClick={handleSignOut} className='text-white m-2 p-2 font-bold'>Sign Out</button>
